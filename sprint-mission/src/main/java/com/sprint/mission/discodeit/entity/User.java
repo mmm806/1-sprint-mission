@@ -36,4 +36,14 @@ public class User {
     public String getEmail() {
         return email;
     }
+
+    public void update(String name, String email) { // name과 email만 수정하는 update 메서드
+        if (name != null) {
+            this.name = name;
+        }
+        if (email != null) {
+            this.email = email;
+        }
+        this.updateAt = System.currentTimeMillis(); // 수정시간 변경
+    }
 }
