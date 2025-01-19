@@ -119,7 +119,7 @@ Location은 /some/path
 -
 
 ## 스크린샷
-![실행화면](sprint-mission/assets/2025-01-19_215023.png)
+![실행화면](C:\Users\mmm80\1-sprint-mission\sprint-mission\asset/화면 캡처 2025-01-19 215023.pngg)
 
 ## 멘토에게
 - 셀프 코드 리뷰를 통해 질문 이어가겠습니다.
