@@ -29,4 +29,9 @@ public class User extends BaseEntity{
         }
         super.update(); // 수정시간 변경
     }
+
+    @Override
+    public String toString() {
+        return "User{id=" + getId() + ", name='" + name + "', email='" + email + "'}";
+    }
 }
