@@ -2,31 +2,14 @@ package com.sprint.mission.discodeit.entity;
 
 import java.util.UUID;
 
-public class User {
-    private UUID id;
-    private Long createdAt;
-    private Long updateAt;
+public class User extends BaseEntity{
     private String name;
     private String email;
 
     public User(String name, String email) {
-        this.id = UUID.randomUUID();
-        this.createdAt = System.currentTimeMillis();
-        this.updateAt = this.createdAt;
+        super();
         this.name = name;
         this.email = email;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public Long getCreatedAt() {
-        return createdAt;
-    }
-
-    public Long getUpdateAt() {
-        return updateAt;
     }
 
     public String getName() {
@@ -44,6 +27,6 @@ public class User {
         if (email != null) {
             this.email = email;
         }
-        this.updateAt = System.currentTimeMillis(); // 수정시간 변경
+        super.update(); // 수정시간 변경
     }
 }

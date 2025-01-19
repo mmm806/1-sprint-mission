@@ -28,4 +28,8 @@ public abstract class BaseEntity {
     public void updateTimestamp() {
         this.updatedAt = System.currentTimeMillis();
     }
+
+    public void update() {
+        this.updatedAt = System.currentTimeMillis();
+    }
 }
