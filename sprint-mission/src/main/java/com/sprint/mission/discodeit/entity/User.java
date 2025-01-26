@@ -27,7 +27,7 @@ public class User extends BaseEntity{
         if (email != null) {
             this.email = email;
         }
-        super.update(); // 수정시간 변경
+        super.updateTimestamp(); // 수정시간 변경
     }
 
     @Override

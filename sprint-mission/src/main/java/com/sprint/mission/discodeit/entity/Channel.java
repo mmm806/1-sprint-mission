@@ -16,6 +16,6 @@ public class Channel extends BaseEntity{
         if (name != name) {
             this.name = name;
         }
-        super.update();
+        super.updateTimestamp();
     }
 }

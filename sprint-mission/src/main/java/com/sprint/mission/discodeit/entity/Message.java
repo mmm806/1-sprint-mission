@@ -28,6 +28,6 @@ public class Message extends BaseEntity{
         if (content != null) {
             this.content = content;
         }
-        super.update();
+        super.updateTimestamp();
     }
 }
