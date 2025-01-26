@@ -29,7 +29,4 @@ public abstract class BaseEntity {
         this.updatedAt = System.currentTimeMillis();
     }
 
-    public void update() {
-        this.updatedAt = System.currentTimeMillis();
-    }
 }
