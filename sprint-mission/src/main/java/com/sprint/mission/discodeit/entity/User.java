@@ -3,35 +3,48 @@ package com.sprint.mission.discodeit.entity;
 import java.util.UUID;
 
 public class User extends BaseEntity{
-    private String name;
+    private String username;
     private String email;
+    private String password;
 
-    public User(String name, String email) {
+    public User(String username, String email, String password) {
         super();
-        this.name = name;
+        this.username = username;
         this.email = email;
+        this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void update(String name, String email) { // name과 email만 수정하는 update 메서드
-        if (name != null) {
-            this.name = name;
-        }
-        if (email != null) {
-            this.email = email;
-        }
-        super.updateTimestamp(); // 수정시간 변경
+    public String getPassword() {
+        return password;
     }
 
-    @Override
-    public String toString() {
-        return "User{id=" + getId() + ", name='" + name + "', email='" + email + "'}";
+    public void update(String newUsername, String newEmail, String newPassword) {
+        boolean anyValueUpdated = false;
+        if (newUsername != null && !newUsername.equals(this.username)) {
+            this.username = newUsername;
+            anyValueUpdated = true;
+        }
+
+        if (newEmail != null && !newEmail.equals(this.email)) {
+            this.email = newEmail;
+            anyValueUpdated = true;
+        }
+
+        if (newPassword != null && !newPassword.equals(this.password)) {
+            this.password = newPassword;
+            anyValueUpdated = true;
+        }
+
+        if (anyValueUpdated) {
+            super.update();
+        }
     }
 }
