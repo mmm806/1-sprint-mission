@@ -3,54 +3,52 @@ package com.sprint.mission.discodeit.service.jcf.com.sprint.mission.discodeit;
 import com.sprint.mission.discodeit.entity.User;
 import com.sprint.mission.discodeit.service.UserService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class JCFUserService implements UserService {
-    private final List<User> data; // 데이터를 저장하는 필드 final로 선언
+    private final Map<UUID, User> data; // 데이터를 저장하는 필드 final로 선언
 
     public JCFUserService() {
-        this.data = new ArrayList<>();
+        this.data = new HashMap<>();
     }
 
     @Override
-    public User createUser(String name, String email) {
-        User user = new User(name, email); // User 객체 생성
-        data.add(user); // 생성된 객체를 data에 저장
+    public User create(String username, String email, String password) {
+        User user = new User(username, email, password);
+        this.data.put(user.getId(), user);
+
         return user;
     }
 
     @Override
-    public User readUserById(UUID id) {
-        return data.stream().
-                filter(user -> user.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+    public User find(UUID userId) {
+        User userNullalbe = this.data.get(userId);
+
+        return Optional.ofNullable(userNullalbe)
+                .orElseThrow(() -> new NoSuchElementException("User with id " + userId + " not found"));
     }
 
     @Override
-    public  List<User> readAllUsers() {
-        return new ArrayList<>(data);
+    public  List<User> findAll() {
+        return this.data.values().stream().toList();
     }
 
     @Override
-    public User updateUser(UUID id, String name, String email) {
-        User user = readUserById(id);
-        if (user != null) {
-            user.update(name, email);
-            return user;
+    public User update(UUID userId, String newUsername, String newEmail, String newPassword) {
+        User userNullable = this.data.get(userId);
+        User user = Optional.ofNullable(userNullable)
+                .orElseThrow(() -> new NoSuchElementException("user with id " + userId + " not found"));
+        user.update(newUsername, newEmail, newPassword);
+
+        return user;
+    }
+
+    @Override
+    public void delete(UUID userId) {
+        if (!this.data.containsKey(userId)) {
+            throw new NoSuchElementException("User with id " + userId + " not found");
         }
-        return null;
-    }
 
-    @Override
-    public boolean deleteUser(UUID id) {
-        User user = readUserById(id);
-        if (user != null) {
-            data.remove(user);
-            return true;
-        }
-        return false;
+        this.data.remove(userId);
     }
 }
