@@ -13,8 +13,6 @@ public abstract class BaseEntity {
         this.createdAt = Instant.now().getEpochSecond();
         this.updatedAt = createdAt;
     }
-
-    // private으로 선언된 필드를 클래스 외부에서 참조할 수 있도록 Getter 메소드를 정의
     public UUID getId() { return id; }
 
     public long getCreatedAt() {

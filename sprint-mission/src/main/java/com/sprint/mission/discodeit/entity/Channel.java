@@ -1,11 +1,11 @@
 package com.sprint.mission.discodeit.entity;
 
 public class Channel extends BaseEntity{
-    private Channeltype type;
+    private ChannelType type;
     private String name;
     private String description;
 
-    public Channel(Channeltype type, String name, String description) {
+    public Channel(ChannelType type, String name, String description) {
         super();
         this.type = type;
         this.name = name;
@@ -16,7 +16,7 @@ public class Channel extends BaseEntity{
         return name;
     }
 
-    public Channeltype getType() {
+    public ChannelType getType() {
         return type;
     }
 

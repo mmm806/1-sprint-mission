@@ -6,7 +6,7 @@ import com.sprint.mission.discodeit.service.UserService;
 import java.util.*;
 
 public class JCFUserService implements UserService {
-    private final Map<UUID, User> data; // 데이터를 저장하는 필드 final로 선언
+    private final Map<UUID, User> data;
 
     public JCFUserService() {
         this.data = new HashMap<>();

@@ -1,7 +1,7 @@
 package com.sprint.mission.discodeit.service.jcf.com.sprint.mission.discodeit;
 
 import com.sprint.mission.discodeit.entity.Channel;
-import com.sprint.mission.discodeit.entity.Channeltype;
+import com.sprint.mission.discodeit.entity.ChannelType;
 import com.sprint.mission.discodeit.service.ChannelService;
 
 import java.util.*;
@@ -14,7 +14,7 @@ public class JCFChannelService implements ChannelService {
     }
 
     @Override
-    public Channel create(Channeltype type, String name, String description) {
+    public Channel create(ChannelType type, String name, String description) {
         Channel channel = new Channel(type, name, description);
         this.data.put(channel.getId(), channel);
 
@@ -25,7 +25,7 @@ public class JCFChannelService implements ChannelService {
     public Channel find(UUID channelId) {
         Channel channelNullable = this.data.get(channelId);
         return Optional.ofNullable(channelNullable)
-                .orElseThrow(() -> new NoSuchElementException("Channel with id " + channelId + " not found"))
+                .orElseThrow(() -> new NoSuchElementException("Channel with id " + channelId + " not found"));
     }
 
     @Override
