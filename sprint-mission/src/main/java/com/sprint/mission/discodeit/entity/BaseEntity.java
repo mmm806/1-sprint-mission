@@ -1,30 +1,33 @@
 package com.sprint.mission.discodeit.entity;
 
+import lombok.Getter;
+
 import java.time.Instant;
 import java.util.UUID;
 
+@Getter
 public abstract class BaseEntity {
     private final UUID id;
-    private final Long createdAt;
-    private Long updatedAt;
+    private final Instant createdAt;
+    private Instant updatedAt;
 
     public BaseEntity() {
         this.id = UUID.randomUUID();
-        this.createdAt = Instant.now().getEpochSecond();
+        this.createdAt = Instant.now();
         this.updatedAt = createdAt;
     }
     public UUID getId() { return id; }
 
-    public long getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public long getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
     public void update() {
-        this.updatedAt = Instant.now().getEpochSecond();
+        this.updatedAt = Instant.now();
     }
 
 }
